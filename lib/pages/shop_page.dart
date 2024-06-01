@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/shoe_tile.dart';
+import '../models/shoe.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -10,6 +11,26 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  final List<Shoe> shoes = [
+    Shoe(
+        id: "1",
+        name: "nike",
+        price: "99",
+        imagepath: "lib/images/sn1.jpg",
+        description: "hot"),
+    Shoe(
+        id: "2",
+        name: "nike",
+        price: "99",
+        imagepath: "lib/images/sn2.jpg",
+        description: "hot"),
+    Shoe(
+        id: "3",
+        name: "nike",
+        price: "99",
+        imagepath: "lib/images/sn3.jpg",
+        description: "hot"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -65,7 +86,11 @@ class _ShopPageState extends State<ShopPage> {
         height: 10,
       ),
       Expanded(child: ListView.builder(itemBuilder: (context, index) {
-        return ShoeTile();
+        return Container(
+            margin: const EdgeInsets.all(8),
+            child: ShoeTile(
+              shoe: shoes[index],
+            ));
       }))
     ]);
   }

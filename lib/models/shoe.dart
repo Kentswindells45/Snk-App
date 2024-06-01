@@ -1,4 +1,5 @@
 class Shoe {
+  final String id;
   final String name;
   final String price;
   final String imagepath;
@@ -8,5 +9,6 @@ class Shoe {
       {required this.name,
       required this.price,
       required this.imagepath,
-      required this.description});
+      required this.description,
+      required this.id});
 }
