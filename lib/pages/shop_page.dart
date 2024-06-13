@@ -11,7 +11,7 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
-  final List<Shoe> shoes = [
+  /*final List<Shoe> shoes = [
     Shoe(
         id: "1",
         name: "nike",
@@ -30,7 +30,7 @@ class _ShopPageState extends State<ShopPage> {
         price: "99",
         imagepath: "lib/images/sn3.jpg",
         description: "hot"),
-  ];
+  ];*/
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -85,13 +85,23 @@ class _ShopPageState extends State<ShopPage> {
       const SizedBox(
         height: 10,
       ),
-      Expanded(child: ListView.builder(itemBuilder: (context, index) {
-        return Container(
-            margin: const EdgeInsets.all(8),
-            child: ShoeTile(
-              shoe: shoes[index],
-            ));
-      }))
+      Expanded(
+          child: ListView.builder(
+              itemCount: 4,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                // create an index for shoe
+                Shoe shoe = Shoe(
+                  name: "Jordans",
+                  price: "240",
+                  imagepath: "lib/images/sn1.jpg",
+                  description: "cool shoe",
+                  id: "01",
+                );
+                return ShoeTile(
+                  shoe: shoe,
+                );
+              }))
     ]);
   }
 }

@@ -2,40 +2,57 @@ import 'package:flutter/material.dart';
 
 import '../models/shoe.dart';
 
+// ignore: must_be_immutable
 class ShoeTile extends StatelessWidget {
-  late double _deviceHeight, _devicewidth;
-  final Shoe shoe;
+  Shoe shoe;
   ShoeTile({super.key, required this.shoe});
 
   @override
   Widget build(BuildContext context) {
-    _deviceHeight = MediaQuery.of(context).size.height;
-    _devicewidth = MediaQuery.of(context).size.width;
     return Container(
-      padding: const EdgeInsets.all(8.0),
-      height: _deviceHeight * 0.60,
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      margin: const EdgeInsets.only(left: 25),
+      width: 200,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
+          color: Colors.grey[100], borderRadius: BorderRadius.circular(12)),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(shoe.imagepath),
-          Text(
-            shoe.name,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            shoe.price,
-            style: TextStyle(color: Colors.grey[200]),
-          ),
+          // shoe image
+          ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(shoe.imagepath)),
+
+          // product discription
           Text(
             shoe.description,
-          )
+            style: TextStyle(color: Colors.grey[600]),
+          ),
+
+          // price and details
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Column(
+              children: [
+                // shoe name
+                Text(shoe.name),
+
+                //price
+                Text(shoe.price),
+
+                //plus button
+                Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: const BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(12),
+                            bottomLeft: Radius.circular(12))),
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ))
+              ],
+            ),
+          ]),
         ],
       ),
     );
