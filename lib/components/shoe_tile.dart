@@ -13,14 +13,20 @@ class ShoeTile extends StatelessWidget {
       margin: const EdgeInsets.only(left: 25),
       width: 200,
       decoration: BoxDecoration(
-          color: Colors.grey[100], borderRadius: BorderRadius.circular(12)),
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // shoe image
-          ClipRRect(
+          Container(
+            margin: const EdgeInsets.only(top: 12),
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.asset(shoe.imagepath)),
+              child: Image.asset(shoe.imagepath),
+            ),
+          ),
 
           // product discription
           Text(
@@ -29,30 +35,41 @@ class ShoeTile extends StatelessWidget {
           ),
 
           // price and details
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Column(
-              children: [
-                // shoe name
-                Text(shoe.name),
-
-                //price
-                Text(shoe.price),
-
-                //plus button
-                Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: const BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(12),
-                            bottomLeft: Radius.circular(12))),
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ))
-              ],
-            ),
-          ]),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 200,
+                child: Column(
+                  children: [
+                    // shoe name
+                    Text(
+                      shoe.name,
+                    ),
+                    //price
+                    Text(
+                      shoe.price,
+                    ),
+                    //plus button
+                    Container(
+                      width: 50,
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(left: 140),
+                      decoration: const BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              bottomRight: Radius.circular(12))),
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
