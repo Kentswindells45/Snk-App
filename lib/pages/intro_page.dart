@@ -45,23 +45,27 @@ class IntroPage extends StatelessWidget {
 
               //start now button
               GestureDetector(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomePage(),
-                      )),
-                  child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey[900],
-                          borderRadius: BorderRadius.circular(12)),
-                      padding: const EdgeInsets.all(25),
-                      child: const Center(
-                        child: Text("Shop Now",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16)),
-                      )))
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    )),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                      borderRadius: BorderRadius.circular(12)),
+                  padding: const EdgeInsets.all(25),
+                  child: const Center(
+                    child: Text(
+                      "Shop Now",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
