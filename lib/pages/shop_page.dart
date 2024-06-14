@@ -13,26 +13,20 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
-  /*final List<Shoe> shoes = [
-    Shoe(
-        id: "1",
-        name: "nike",
-        price: "99",
-        imagepath: "lib/images/sn1.jpg",
-        description: "hot"),
-    Shoe(
-        id: "2",
-        name: "nike",
-        price: "99",
-        imagepath: "lib/images/sn2.jpg",
-        description: "hot"),
-    Shoe(
-        id: "3",
-        name: "nike",
-        price: "99",
-        imagepath: "lib/images/sn3.jpg",
-        description: "hot"),
-  ];*/
+  // add shoe to cart
+  void addShoeToCart(Shoe shoe) {
+    Provider.of<Cart>(context, listen: false).addItemToCart(shoe);
+
+    // alert the user, shoe successfuly added
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Successfully added!'),
+        content: Text('Check your cart'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(
@@ -104,6 +98,7 @@ class _ShopPageState extends State<ShopPage> {
                 //return the shoe
                 return ShoeTile(
                   shoe: shoe,
+                  onTap: () => addShoeToCart(shoe),
                 );
               },
             ),
