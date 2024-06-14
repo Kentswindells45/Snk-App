@@ -45,10 +45,12 @@ class ShoeTile extends StatelessWidget {
                     // shoe name
                     Text(
                       shoe.name,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                     //price
                     Text(
-                      shoe.price,
+                      'GHC' + '  ' + shoe.price,
                     ),
                     //plus button
                     Container(
